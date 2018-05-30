@@ -1,0 +1,64 @@
+{
+    "name": "backpack/usermanager",
+    "description": "Users management interface for Laravel 5 using Backpack CRUD.",
+    "keywords": [
+        "tabacitu",
+        "laravel backpack",
+        "backpack user management",        
+        "backpack",        
+        "manage users",
+        "users roles admin"
+    ],
+    "homepage": "https://github.com/laravel-backpack/usermanager",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Eduardo Aranda",
+            "email": "eduardoarandah@gmail.com",
+            "homepage": "https://eduardoarandah.github.io/",
+            "role": "Lead Developer"
+        },
+        {
+            "name": "Marius Constantin",
+            "email": "marius@updivision.com",
+            "homepage": "http://www.updivision.com",
+            "role": "Lead Developer"
+        },
+        {
+            "name": "Cristian Tabacitu",
+            "email": "hello@tabacitu.ro",
+            "homepage": "http://www.tabacitu.ro",
+            "role": "Chief Architect"
+        }
+    ],
+    "require": {
+        "backpack/crud": "^3.4.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit" : "4.*",
+        "scrutinizer/ocular": "~1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Backpack\\UserManager\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Backpack\\UserManager\\Test\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        },
+        "laravel": {
+            "providers": [
+                "Backpack\\UserManager\\UserManagerServiceProvider"
+            ]
+        }
+    }
+}
