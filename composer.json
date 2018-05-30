@@ -7,7 +7,10 @@
         "backpack user management",        
         "backpack",        
         "manage users",
-        "users roles admin"
+        "users admin",
+        "user management",
+        "laravel user management",
+        "Eduardo Aranda"
     ],
     "homepage": "https://github.com/laravel-backpack/usermanager",
     "license": "proprietary",
