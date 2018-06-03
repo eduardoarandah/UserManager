@@ -54,10 +54,16 @@ Copy source code into your project
 
 	$this->crud->setModel('App\Models\User'));
 
-To add fields in when updating/creating:
+Now you can remove the package with composer
+
+``` bash
+composer require backpack/usermanager
+```
+
+Documentation for fields (updating/creating)
 
 [https://laravel-backpack.readme.io/docs/crud-fields](https://laravel-backpack.readme.io/docs/crud-fields) 
 
-To show columns in list view:
+Documentation for columns (list view)
 
 [https://laravel-backpack.readme.io/docs/crud-columns-types](https://laravel-backpack.readme.io/docs/crud-columns-types)
