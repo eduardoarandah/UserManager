@@ -1,6 +1,6 @@
 <?php
 
-namespace Backpack\UserManager;
+namespace EduardoArandaH\UserManager;
 
 use Config;
 use Illuminate\Routing\Router;
@@ -20,7 +20,7 @@ class UserManagerServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public $routeFilePath = '/routes/backpack/usermanager.php';
+    public $routeFilePath = '/routes/eduardoarandah/usermanager.php';
 
     /**
      * Perform post-registration booting of services.
@@ -33,14 +33,17 @@ class UserManagerServiceProvider extends ServiceProvider
         $this->setupRoutes($this->app->router);
 
          $this->mergeConfigFrom(
-            __DIR__.'/config/backpack/usermanager.php', 'backpack.usermanager'
+            __DIR__.'/config/eduardoarandah/usermanager.php', 'eduardoarandah.usermanager'
         );
 
         // publish config file
         $this->publishes([__DIR__.'/config' => config_path()], 'config');
 
+        //load translations
+        $this->loadTranslationsFrom(__DIR__.'/resources/lang', 'eduardoarandah');
+
         // publish translation files
-        $this->publishes([__DIR__.'/resources/lang' => resource_path('lang/vendor/backpack')], 'lang');
+        $this->publishes([__DIR__.'/resources/lang' => resource_path('lang/vendor/eduardoarandah')], 'lang');
     }
 
     /**
@@ -55,7 +58,7 @@ class UserManagerServiceProvider extends ServiceProvider
         // by default, use the routes file provided in vendor
         $routeFilePathInUse = __DIR__.$this->routeFilePath;
 
-        // but if there's a file with the same name in routes/backpack, use that one
+        // but if there's a file with the same name in routes/eduardoarandah, use that one
         if (file_exists(base_path().$this->routeFilePath)) {
             $routeFilePathInUse = base_path().$this->routeFilePath;
         }

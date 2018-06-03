@@ -13,12 +13,12 @@ An admin interface to easily add/edit/remove users, using [Laravel Backpack](htt
 1) In your terminal:
 
 ``` bash
-$ composer require backpack/usermanager
+$ composer require eduardoarandah/usermanager
 ```
 
 2) For Laravel <5.5, add the service provider to your config/app.php file:
 ```php
-Backpack\UserManager\UserManagerServiceProvider::class,
+EduardoArandaH\UserManager\UserManagerServiceProvider::class,
 ```
 
 3) Use the following traits on your User model:
@@ -47,7 +47,7 @@ class User extends Authenticatable
 
 Copy source code into your project
 
-- Go to vendor/backpack/usermanager/src
+- Go to vendor/eduardoarandah/usermanager/src
 - Copy routes in src/routes/backpack/usermanager.php into your routes/web.php file
 - Copy src/app/Http/Controllers/UserCrudController.php in your app/Http/Controllers folder
 - In UserCrudController set the model, example:

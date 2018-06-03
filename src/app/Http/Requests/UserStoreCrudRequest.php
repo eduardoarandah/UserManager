@@ -1,6 +1,6 @@
 <?php
 
-namespace Backpack\UserManager\app\Http\Requests;
+namespace EduardoArandaH\UserManager\app\Http\Requests;
 
 use Backpack\CRUD\app\Http\Requests\CrudRequest;
 
@@ -14,7 +14,7 @@ class UserStoreCrudRequest extends CrudRequest
     public function rules()
     {
         return [
-            'email'    => 'required|unique:'.config('laravel-permission.table_names.users', 'users').',email',
+            'email'    => 'required|unique:'.config('eduardoarandah.usermanager.table_name','users').',email',
             'name'     => 'required',
             'password' => 'required|confirmed',
         ];

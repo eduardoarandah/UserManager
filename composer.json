@@ -1,8 +1,7 @@
 {
-    "name": "backpack/usermanager",
+    "name": "eduardoarandah/usermanager",
     "description": "Users management interface for Laravel 5 using Backpack CRUD.",
     "keywords": [
-        "tabacitu",
         "laravel backpack",
         "backpack user management",        
         "backpack",        
@@ -12,27 +11,14 @@
         "laravel user management",
         "Eduardo Aranda"
     ],
-    "homepage": "https://github.com/laravel-backpack/usermanager",
-    "license": "proprietary",
+    "homepage": "https://github.com/eduardoarandah/UserManager",
+    "license": "MIT",
     "authors": [
         {
             "name": "Eduardo Aranda",
             "email": "eduardoarandah@gmail.com",
-            "homepage": "https://eduardoarandah.github.io/",
-            "role": "Lead Developer"
-        },
-        {
-            "name": "Marius Constantin",
-            "email": "marius@updivision.com",
-            "homepage": "http://www.updivision.com",
-            "role": "Lead Developer"
-        },
-        {
-            "name": "Cristian Tabacitu",
-            "email": "hello@tabacitu.ro",
-            "homepage": "http://www.tabacitu.ro",
-            "role": "Chief Architect"
-        }
+            "homepage": "https://eduardoarandah.github.io/"
+        }        
     ],
     "require": {
         "backpack/crud": "^3.4.0"
@@ -43,12 +29,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Backpack\\UserManager\\": "src"
+            "EduardoArandaH\\UserManager\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Backpack\\UserManager\\Test\\": "tests"
+            "EduardoArandaH\\UserManager\\Test\\": "tests"
         }
     },
     "scripts": {
@@ -60,7 +46,7 @@
         },
         "laravel": {
             "providers": [
-                "Backpack\\UserManager\\UserManagerServiceProvider"
+                "EduardoArandaH\\UserManager\\UserManagerServiceProvider"
             ]
         }
     }

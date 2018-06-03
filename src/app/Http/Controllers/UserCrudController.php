@@ -1,11 +1,11 @@
 <?php
 
-namespace Backpack\UserManager\app\Http\Controllers;
+namespace EduardoArandaH\UserManager\app\Http\Controllers;
 
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Http\Requests\CrudRequest;
-use Backpack\UserManager\app\Http\Requests\UserStoreCrudRequest as StoreRequest;
-use Backpack\UserManager\app\Http\Requests\UserUpdateCrudRequest as UpdateRequest;
+use EduardoArandaH\UserManager\app\Http\Requests\UserStoreCrudRequest as StoreRequest;
+use EduardoArandaH\UserManager\app\Http\Requests\UserUpdateCrudRequest as UpdateRequest;
 
 class UserCrudController extends CrudController
 {
@@ -16,8 +16,8 @@ class UserCrudController extends CrudController
         | BASIC CRUD INFORMATION
         |--------------------------------------------------------------------------
         */
-        $this->crud->setModel(config('backpack.usermanager.user_model'));
-        $this->crud->setEntityNameStrings(trans('backpack::usermanager.user'), trans('backpack::usermanager.users'));
+        $this->crud->setModel(config('eduardoarandah.usermanager.user_model'));
+        $this->crud->setEntityNameStrings(trans('eduardoarandah::usermanager.user'), trans('eduardoarandah::usermanager.users'));
         $this->crud->setRoute(config('backpack.base.route_prefix').'/user');
         $this->crud->enableAjaxTable();
 
@@ -25,12 +25,12 @@ class UserCrudController extends CrudController
         $this->crud->setColumns([
             [
                 'name'  => 'name',
-                'label' => trans('backpack::usermanager.name'),
+                'label' => trans('eduardoarandah::usermanager.name'),
                 'type'  => 'text',
             ],
             [
                 'name'  => 'email',
-                'label' => trans('backpack::usermanager.email'),
+                'label' => trans('eduardoarandah::usermanager.email'),
                 'type'  => 'email',
             ]            
         ]);
@@ -39,22 +39,22 @@ class UserCrudController extends CrudController
         $this->crud->addFields([
             [
                 'name'  => 'name',
-                'label' => trans('backpack::usermanager.name'),
+                'label' => trans('eduardoarandah::usermanager.name'),
                 'type'  => 'text',
             ],
             [
                 'name'  => 'email',
-                'label' => trans('backpack::usermanager.email'),
+                'label' => trans('eduardoarandah::usermanager.email'),
                 'type'  => 'email',
             ],
             [
                 'name'  => 'password',
-                'label' => trans('backpack::usermanager.password'),
+                'label' => trans('eduardoarandah::usermanager.password'),
                 'type'  => 'password',
             ],
             [
                 'name'  => 'password_confirmation',
-                'label' => trans('backpack::usermanager.password_confirmation'),
+                'label' => trans('eduardoarandah::usermanager.password_confirmation'),
                 'type'  => 'password',
             ]
         ]);

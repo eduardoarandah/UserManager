@@ -9,5 +9,6 @@ return [
     |
     */
     'user_model' => 'App\User',
+    'table_name' => 'users',
 
 ];
