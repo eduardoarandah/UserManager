@@ -43,9 +43,21 @@ class User extends Authenticatable
 <li><a href="{{ url(config('backpack.base.route_prefix', 'admin') . '/user') }}"><i class="fa fa-user"></i> <span>Users</span></a></li>
 ```
 
-## Testing
+## How to add/remove fields
 
-``` bash
-// TODO
-```
+Copy source code into your project
 
+- Go to vendor/backpack/usermanager/src
+- Copy routes in src/routes/backpack/usermanager.php into your routes/web.php file
+- Copy src/app/Http/Controllers/UserCrudController.php in your app/Http/Controllers folder
+- In UserCrudController set the model, example:
+
+	$this->crud->setModel('App\Models\User'));
+
+To add fields in when updating/creating:
+
+[https://laravel-backpack.readme.io/docs/crud-fields](https://laravel-backpack.readme.io/docs/crud-fields) 
+
+To show columns in list view:
+
+[https://laravel-backpack.readme.io/docs/crud-columns-types](https://laravel-backpack.readme.io/docs/crud-columns-types)
