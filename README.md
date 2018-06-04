@@ -1,6 +1,6 @@
 # Backpack\UserManager
 
-An admin interface to easily add/edit/remove users, using [Laravel Backpack](https://laravelbackpack.com)
+An admin interface to easily add/edit/remove users, using [Backpack for Laravel](https://backpackforlaravel.com)
 
 ![user-manager](https://user-images.githubusercontent.com/4065733/40717133-e8b5701e-63d0-11e8-9f1d-540500161f64.png)
 
@@ -12,8 +12,8 @@ An admin interface to easily add/edit/remove users, using [Laravel Backpack](htt
 
 1) In your terminal:
 
-``` bash
-$ composer require eduardoarandah/usermanager
+```bash
+composer require eduardoarandah/usermanager
 ```
 
 2) For Laravel <5.5, add the service provider to your config/app.php file:
@@ -37,19 +37,20 @@ class User extends Authenticatable
      */
 ```
 
-4) [Optional] Add a menu item for it in resources/views/vendor/backpack/base/inc/sidebar_content.blade.php or menu.blade.php:
+4) [Optional] Add a menu item for it:
 
-```html
-<li><a href="{{ url(config('backpack.base.route_prefix', 'admin') . '/user') }}"><i class="fa fa-user"></i> <span>Users</span></a></li>
+```bash
+php artisan backpack:base:add-sidebar-content "<li><a href='{{ url(backpack_url('user')) }}'><i class='fa fa-user'></i> <span>Users</span></a></li>"
 ```
+(alternatively, manually add an item in ```resources/views/vendor/backpack/base/inc/sidebar_content.blade.php``` or ```menu.blade.php```)
 
 ## How to add/remove fields
 
 Copy source code into your project
 
-- Go to vendor/eduardoarandah/usermanager/src
-- Copy routes in src/routes/backpack/usermanager.php into your routes/web.php file
-- Copy src/app/Http/Controllers/UserCrudController.php in your app/Http/Controllers folder
+- Go to ```vendor/eduardoarandah/usermanager/src```
+- Copy routes in ```src/routes/backpack/usermanager.php``` into your ```routes/web.php``` file
+- Copy ```src/app/Http/Controllers/UserCrudController.php``` in your ```app/Http/Controllers``` folder
 - In UserCrudController set the model, example:
 
 	$this->crud->setModel('App\Models\User'));
