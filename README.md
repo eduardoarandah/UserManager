@@ -49,11 +49,11 @@ php artisan backpack:base:add-sidebar-content "<li><a href='{{ url(backpack_url(
 Copy source code into your project
 
 - Go to ```vendor/eduardoarandah/usermanager/src```
-- Copy routes in ```src/routes/backpack/usermanager.php``` into your ```routes/web.php``` file
-- Copy ```src/app/Http/Controllers/UserCrudController.php``` in your ```app/Http/Controllers``` folder
+- Copy CODE in ```routes/eduardoarandah/usermanager.php``` in your ```routes/web.php``` file
+- Copy FILE ```app/Http/Controllers/UserCrudController.php``` inside your ```app/Http/Controllers``` folder
 - In UserCrudController set the model, example:
 
-	$this->crud->setModel('App\Models\User'));
+	$this->crud->setModel('App\User'));
 
 Now you can remove the package with composer
 
