@@ -40,7 +40,7 @@ class User extends Authenticatable
 4) [Optional] Add a menu item for it:
 
 ```bash
-php artisan backpack:base:add-sidebar-content "<li><a href='{{ url(backpack_url('user')) }}'><i class='fa fa-user'></i> <span>Users</span></a></li>"
+php artisan backpack:base:add-sidebar-content "<li><a href='{{ backpack_url('user') }}'><i class='fa fa-user'></i> <span>Users</span></a></li>"
 ```
 (alternatively, manually add an item in ```resources/views/vendor/backpack/base/inc/sidebar_content.blade.php``` or ```menu.blade.php```)
 
