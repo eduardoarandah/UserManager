@@ -9,19 +9,20 @@ use EduardoArandaH\UserManager\app\Http\Requests\UserUpdateCrudRequest as Update
 
 class UserCrudController extends CrudController
 {
+    use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation { store as traitStore; }
+    use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation { update as traitUpdate; }
+    use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
+
     public function setup()
     {
-        /*
-        |--------------------------------------------------------------------------
-        | BASIC CRUD INFORMATION
-        |--------------------------------------------------------------------------
-        */
         $this->crud->setModel(config('eduardoarandah.usermanager.user_model'));
         $this->crud->setEntityNameStrings(trans('eduardoarandah::usermanager.user'), trans('eduardoarandah::usermanager.users'));
         $this->crud->setRoute(config('backpack.base.route_prefix').'/user');
-        $this->crud->enableAjaxTable();
+    }
 
-        // Columns.
+    protected function setupListOperation()
+    {
         $this->crud->setColumns([
             [
                 'name'  => 'name',
@@ -34,8 +35,53 @@ class UserCrudController extends CrudController
                 'type'  => 'email',
             ]            
         ]);
+    }
 
-        // Fields
+    protected function setupCreateOperation()
+    {
+        $this->crud->setValidation(StoreRequest::class);
+        $this->addFields();
+    }
+
+    protected function setupUpdateOperation()
+    {
+        $this->crud->setValidation(UpdateRequest::class);
+        $this->addFields();
+    }
+
+    /**
+     * Store a newly created resource in the database.
+     *
+     * @param StoreRequest $request - type injection used for validation using Requests
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function store(StoreRequest $request)
+    {
+        $this->handlePasswordInput($request);
+
+        return $this->traitStore($request);
+    }
+
+    /**
+     * Update the specified resource in the database.
+     *
+     * @param UpdateRequest $request - type injection used for validation using Requests
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update(UpdateRequest $request)
+    {
+        $this->handlePasswordInput($request);
+
+        return $this->traitUpdate($request);
+    }
+
+    /**
+     * Add the fields needed in the Create and Update operations.
+     */
+    protected function addFields()
+    {
         $this->crud->addFields([
             [
                 'name'  => 'name',
@@ -59,35 +105,7 @@ class UserCrudController extends CrudController
             ]
         ]);
     }
-
-    /**
-     * Store a newly created resource in the database.
-     *
-     * @param StoreRequest $request - type injection used for validation using Requests
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function store(StoreRequest $request)
-    {
-        $this->handlePasswordInput($request);
-
-        return parent::storeCrud($request);
-    }
-
-    /**
-     * Update the specified resource in the database.
-     *
-     * @param UpdateRequest $request - type injection used for validation using Requests
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function update(UpdateRequest $request)
-    {
-        $this->handlePasswordInput($request);
-
-        return parent::updateCrud($request);
-    }
-
+    
     /**
      * Handle password input fields.
      *

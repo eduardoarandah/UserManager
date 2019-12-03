@@ -8,7 +8,38 @@ An admin interface to easily add/edit/remove users, using [Backpack for Laravel]
 > Please **[subscribe to the Backpack Newsletter](http://backpackforlaravel.com/newsletter)** so you can find out about any security updates, breaking changes or major features. We send an email every 1-2 months.
 
 
-## Install
+## Install on Backpack v4 (Laravel 6)
+
+1) In your terminal:
+
+```bash
+composer require eduardoarandah/usermanager
+```
+
+2) Use Backpack's CrudTrait on your User model:
+```php
+<?php namespace App;
+
+use Illuminate\Foundation\Auth\User as Authenticatable; 
+
+class User extends Authenticatable
+{
+    use Backpack\CRUD\app\Models\Traits\CrudTrait; // <----- this    
+
+    /**
+     * Your User Model content
+     */
+```
+
+4) [Optional] Add a menu item for it:
+
+```bash
+php artisan backpack:add-sidebar-content "<li class='nav-item'><a class='nav-link' href='{{ backpack_url('user') }}'><i class='nav-icon fa fa-user'></i> <span>Users</span></a></li>"
+```
+(alternatively, manually add an item in ```resources/views/vendor/backpack/base/inc/sidebar_content.blade.php``` or ```menu.blade.php```)
+
+
+## Install on Backpack v3 (Laravel 5)
 
 1) In your terminal:
 
