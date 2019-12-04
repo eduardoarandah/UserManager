@@ -2,6 +2,10 @@
 
 An admin interface to easily add/edit/remove users, using [Backpack for Laravel](https://backpackforlaravel.com)
 
+## Backpack 4
+![user-manager](https://user-images.githubusercontent.com/1032474/70066883-1b288580-15f6-11ea-837d-bdf4eae8d94a.gif)
+
+## Backpack 3
 ![user-manager](https://user-images.githubusercontent.com/4065733/40717133-e8b5701e-63d0-11e8-9f1d-540500161f64.png)
 
 > ### Security updates and breaking changes
