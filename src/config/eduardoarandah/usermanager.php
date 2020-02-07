@@ -8,7 +8,7 @@ return [
     |--------------------------------------------------------------------------
     |
     */
-    'user_model' => 'App\User',
+    'user_model' => App\Models\BackpackUser::class,
     'table_name' => 'users',
 
 ];

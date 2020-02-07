@@ -20,22 +20,29 @@ An admin interface to easily add/edit/remove users, using [Backpack for Laravel]
 composer require eduardoarandah/usermanager
 ```
 
-2) Use Backpack's CrudTrait on your User model:
+2) Add Backpack's CrudTrait on your User model:
+
+By default: app/Models/BackpackUser.php
+
 ```php
-<?php namespace App;
+namespace App\Models;
 
-use Illuminate\Foundation\Auth\User as Authenticatable; 
+use App\User;
+use Backpack\CRUD\app\Models\Traits\InheritsRelationsFromParentModel;
+use Backpack\CRUD\app\Notifications\ResetPasswordNotification as ResetPasswordNotification;
+use Illuminate\Notifications\Notifiable;
+use Backpack\CRUD\app\Models\Traits\CrudTrait; <--- Add this line
 
-class User extends Authenticatable
+class BackpackUser extends User
 {
-    use Backpack\CRUD\app\Models\Traits\CrudTrait; // <----- this    
+    use InheritsRelationsFromParentModel;
+    use Notifiable;
+    use CrudTrait; <--- Add this line
 
-    /**
-     * Your User Model content
-     */
+    ...
 ```
 
-4) [Optional] Add a menu item for it:
+4) [Optional] Add a sidebar link
 
 ```bash
 php artisan backpack:add-sidebar-content "<li class='nav-item'><a class='nav-link' href='{{ backpack_url('user') }}'><i class='nav-icon fa fa-user'></i> <span>Users</span></a></li>"
@@ -61,11 +68,11 @@ EduardoArandaH\UserManager\UserManagerServiceProvider::class,
 <?php namespace App;
 
 use Backpack\CRUD\CrudTrait; // <------------------------------- this one
-use Illuminate\Foundation\Auth\User as Authenticatable; 
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use CrudTrait; // <----- this    
+    use CrudTrait; // <----- this
 
     /**
      * Your User Model content
@@ -98,7 +105,7 @@ composer require backpack/usermanager
 
 Documentation for fields (updating/creating)
 
-[https://laravel-backpack.readme.io/docs/crud-fields](https://laravel-backpack.readme.io/docs/crud-fields) 
+[https://laravel-backpack.readme.io/docs/crud-fields](https://laravel-backpack.readme.io/docs/crud-fields)
 
 Documentation for columns (list view)
 
