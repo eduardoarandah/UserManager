@@ -33,7 +33,7 @@ class UserCrudController extends CrudController
                 'name'  => 'email',
                 'label' => trans('eduardoarandah::usermanager.email'),
                 'type'  => 'email',
-            ]            
+            ]
         ]);
     }
 
@@ -105,7 +105,7 @@ class UserCrudController extends CrudController
             ]
         ]);
     }
-    
+
     /**
      * Handle password input fields.
      *
@@ -121,11 +121,9 @@ class UserCrudController extends CrudController
         if ($request->input('password')) {
             $hashed_password = bcrypt($request->input('password'));
 
-            $request->request->set('password', $hashed_password);
             $crud_request->set('password', $hashed_password);
             $crud_request->set('password_confirmation', $hashed_password);
         } else {
-            $request->request->remove('password');
             $crud_request->remove('password');
         }
     }
