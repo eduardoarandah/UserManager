@@ -86,27 +86,36 @@ php artisan backpack:base:add-sidebar-content "<li><a href='{{ backpack_url('use
 ```
 (alternatively, manually add an item in ```resources/views/vendor/backpack/base/inc/sidebar_content.blade.php``` or ```menu.blade.php```)
 
-## How to add/remove fields
+## How to extend this package
 
-Copy source code into your project
+When you need more control on your user model, the best way is copying the code.
 
-- Go to ```vendor/eduardoarandah/usermanager/src```
-- Copy CODE in ```routes/eduardoarandah/usermanager.php``` in your ```routes/web.php``` file
-- Copy FILE ```app/Http/Controllers/UserCrudController.php``` inside your ```app/Http/Controllers``` folder
+**You can even make your own** CRUD controller with `php artisan backpack:crud user` and simply add `handlePasswordInput` `addFields` methods in `src/app/Http/Controllers/UserCrudController`. [See code](https://github.com/eduardoarandah/UserManager/blob/master/src/app/Http/Controllers/UserCrudController.php)
+
+### To copy source code into your project
+
+Go to `vendor/eduardoarandah/usermanager/src` and copy: 
+
+- Route: `routes/eduardoarandah/usermanager.php` in your `routes/web.php` file
+- Controller `app/Http/Controllers/UserCrudController.php` inside your `app/Http/Controllers` folder
+- Requests `app/Http/Requests/*` inside your `app/Http/Controllers` folder
 - In UserCrudController set the model, example:
 
 	$this->crud->setModel('App\User'));
 
-Now you can remove the package with composer
+- In every file, replace my namespace `EduardoArandaH\UserManager\app\Http\Requests` for `App\Http\Requests`
+
+Now you can remove the package with composer: 
 
 ``` bash
-composer require backpack/usermanager
+composer remove eduardoarandah/usermanager
 ```
 
-Documentation for fields (updating/creating)
+
+## Documentation for fields (updating/creating)
 
 [https://laravel-backpack.readme.io/docs/crud-fields](https://laravel-backpack.readme.io/docs/crud-fields)
 
-Documentation for columns (list view)
+## Documentation for columns (list view)
 
 [https://laravel-backpack.readme.io/docs/crud-columns-types](https://laravel-backpack.readme.io/docs/crud-columns-types)
