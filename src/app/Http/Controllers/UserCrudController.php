@@ -113,18 +113,21 @@ class UserCrudController extends CrudController
      */
     protected function handlePasswordInput(CrudRequest $request)
     {
-        // Remove fields not present on the user.
-        $request->request->remove('password_confirmation');
-        $crud_request = $this->crud->request->request;
+        $crud_request = $this->crud->getRequest();
 
-        // Encrypt password if specified.
+        // If a password was specified
         if ($request->input('password')) {
+            // encrypt it before storing it
             $hashed_password = bcrypt($request->input('password'));
 
-            $crud_request->set('password', $hashed_password);
-            $crud_request->set('password_confirmation', $hashed_password);
+            $crud_request->request->set('password', $hashed_password);
+            $crud_request->request->set('password_confirmation', $hashed_password);
         } else {
-            $crud_request->remove('password');
+            // ignore the password inputs entirely
+            $crud_request->request->remove('password');
+            $crud_request->request->remove('password_confirmation');
         }
+
+        $this->crud->setRequest($crud_request);
     }
 }

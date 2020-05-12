@@ -11,8 +11,37 @@ An admin interface to easily add/edit/remove users, using [Backpack for Laravel]
 > ### Security updates and breaking changes
 > Please **[subscribe to the Backpack Newsletter](http://backpackforlaravel.com/newsletter)** so you can find out about any security updates, breaking changes or major features. We send an email every 1-2 months.
 
+## Install on Backpack v4.1 (Laravel 6 or Laravel 7)
 
-## Install on Backpack v4 (Laravel 6)
+1) In your terminal:
+
+```bash
+composer require eduardoarandah/usermanager
+```
+
+2) Add Backpack's CrudTrait on your User model:
+
+By default: app/User.php
+
+```php
+namespace App;
+
+class BackpackUser extends User
+{
+    use Backpack\CRUD\app\Models\Traits\CrudTrait; // <--- Add this line
+
+    // ...
+```
+
+3) [Optional] Add a sidebar link
+
+```bash
+php artisan backpack:add-sidebar-content "<li class='nav-item'><a class='nav-link' href='{{ backpack_url('user') }}'><i class='nav-icon la la-user'></i> <span>Users</span></a></li>"
+```
+(alternatively, manually add an item in ```resources/views/vendor/backpack/base/inc/sidebar_content.blade.php``` or ```menu.blade.php```)
+
+
+## Install on Backpack v4.0 (Laravel 6 or Laravel 7)
 
 1) In your terminal:
 
@@ -42,7 +71,7 @@ class BackpackUser extends User
     ...
 ```
 
-4) [Optional] Add a sidebar link
+3) [Optional] Add a sidebar link
 
 ```bash
 php artisan backpack:add-sidebar-content "<li class='nav-item'><a class='nav-link' href='{{ backpack_url('user') }}'><i class='nav-icon fa fa-user'></i> <span>Users</span></a></li>"
@@ -119,3 +148,11 @@ composer remove eduardoarandah/usermanager
 ## Documentation for columns (list view)
 
 [https://laravel-backpack.readme.io/docs/crud-columns-types](https://laravel-backpack.readme.io/docs/crud-columns-types)
+
+
+## Upgrade from Backpack 4.0 to 4.1
+
+To successfully use this package after you upgrade your project from Backpack 4.0 to Backpack 4.1, you need to:
+- require version ```^3.0``` of this package by changing your ```composer.json``` file or running ```composer require eduardoarandah/usermanager:"^3.0"```;
+- (most likely) change the user model in the usermanager config file from ```App\Models\BackpackUser::class``` to ```App\User::class```;
+- (less likely) if you've extended the UserCrudController in this package and you've modified the ```handlePasswordInput()``` function, you also need to take account that the crud request in now fetched using setters and getters instead of directly as a property; take a closer look at [Step 11](https://backpackforlaravel.com/docs/4.1/upgrade-guide#step-11) in the Backpack 4.1 upgrade guide, or look at the new code in this package for inspiration;
