@@ -1,6 +1,6 @@
 {
     "name": "eduardoarandah/usermanager",
-    "description": "Users management interface for Laravel 6 using Backpack CRUD.",
+    "description": "Users management interface for Laravel using Backpack CRUD.",
     "keywords": [
         "laravel backpack",
         "backpack user management",        
