@@ -28,7 +28,7 @@ namespace App;
 
 class BackpackUser extends User
 {
-    use Backpack\CRUD\app\Models\Traits\CrudTrait; // <--- Add this line
+    use \Backpack\CRUD\app\Models\Traits\CrudTrait; // <--- Add this line
 
     // ...
 ```
