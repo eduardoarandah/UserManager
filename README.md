@@ -33,7 +33,13 @@ class BackpackUser extends User
     // ...
 ```
 
-3) [Optional] Add a sidebar link
+3) [Optional] If your User model is NOT `App\User::class` or your users table is not `users`, you should publish this package's config file and correct those assumptions in the `config/eduardoarandah/usermanager.php` file. To publish file, run:
+
+```bash
+php artisan vendor:publish --provider="EduardoArandaH\UserManager\UserManagerServiceProvider" --tag='config'
+```
+
+4) [Optional] Add a sidebar link
 
 ```bash
 php artisan backpack:add-sidebar-content "<li class='nav-item'><a class='nav-link' href='{{ backpack_url('user') }}'><i class='nav-icon la la-user'></i> <span>Users</span></a></li>"
